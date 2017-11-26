@@ -35,13 +35,10 @@ delay=10
 # Copy Error Message to the error variable
 error=$(<$errfile)
 # Launch irssi in background with screen
-screen -d -m irssi
+screen -d -m irssi -c $server -p $port -w $password
 # And connect it to our server.  We'll give it a few seconds to start up, just in case the server is laggy
 # Since, you know, this script is only called when an error is detected
 # Leave the hanging quotes,or irssi won't do anything.
-sleep $delay
-screen -X stuff "/connect $server $port $password
-"
 # Then get in to the channel
 sleep $delay
 screen -X stuff "/join $channel
